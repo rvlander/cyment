@@ -5,20 +5,6 @@
 
 packages:
 - completed:
-    cabal-file:
-      size: 6909
-      sha256: 13f09e904248a40dd173c08f2859d0dfda178a7c27f88df20b70a0d5a7614757
-    name: github
-    version: '0.22'
-    git: https://github.com/rvlander/github.git
-    pantry-tree:
-      size: 15813
-      sha256: 23c5c845d3b260ede57499025004729d3f949bc25bad82771dfccdcd9d7564b5
-    commit: 6a44ccc135bbd69386f6adfd2c51ad3970aedc2e
-  original:
-    git: https://github.com/rvlander/github.git
-    commit: 6a44ccc135bbd69386f6adfd2c51ad3970aedc2e
-- completed:
     hackage: polysemy-1.0.0.0@sha256:5a4596f7ff06db81fc7e2f121fbe481871c348d3c5481297c6af983b728b075c,5509
     pantry-tree:
       size: 3044
@@ -32,6 +18,13 @@ packages:
       sha256: b58b9e7a482f158b33d87d807cd91bf99e6cd998593f4d9b11d96e978559a690
   original:
     hackage: binary-instances-1@sha256:cdef50410f2797de38f021d328d38c32b2f4abeaab86bfaf78e0657150863090,2613
+- completed:
+    hackage: transformers-either-0.1.1@sha256:ec3d6fefd90e243b51aecebfc0ebc5db6381c261d473ea2df7ed7b501a8fb961,1501
+    pantry-tree:
+      size: 317
+      sha256: a69c9cbc1d8340c63cc8a9bbd718e13a41869d30a7c84d27be94bbc04ad73a69
+  original:
+    hackage: transformers-either-0.1.1@sha256:ec3d6fefd90e243b51aecebfc0ebc5db6381c261d473ea2df7ed7b501a8fb961,1501
 snapshots:
 - completed:
     size: 523448

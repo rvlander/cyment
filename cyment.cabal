@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 5ed13819485666467dd22fe58ef43d54d85f228c17a3b8fc577de5f2d07d7978
+-- hash: b5364a39f5c82496ca2d5d9605aff62db6a7e4ead245f3dc11160b3d27a311e4
 
 name:           cyment
 version:        0.1.0.0
@@ -35,8 +35,12 @@ library
   build-depends:
       base >=4.7 && <5
     , bytestring
+    , either
     , github
     , text
+    , transformers
+    , transformers-either
+    , vector
   default-language: Haskell2010
 
 executable cyment-exe

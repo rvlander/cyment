@@ -28,6 +28,10 @@ library:
     - github
     - bytestring
     - text
+    - transformers
+    - transformers-either
+    - either
+    - vector
 
 executables:
   cyment-exe:

@@ -30,16 +30,18 @@ resolver: lts-14.1
 #   - wai
 packages:
 - .
+- ../github
 # Dependency packages to be pulled from upstream that are not in the resolver.
 # These entries can reference officially published versions as well as
 # forks / in-progress versions pinned to a git hash. For example:
 #
 extra-deps:
 # - acme-missiles-0.3
-- git: https://github.com/rvlander/github.git
-  commit: 6a44ccc135bbd69386f6adfd2c51ad3970aedc2e
+# - git: https://github.com/rvlander/github.git
+#   commit: 6a44ccc135bbd69386f6adfd2c51ad3970aedc2e
 - polysemy-1.0.0.0
 - binary-instances-1@sha256:cdef50410f2797de38f021d328d38c32b2f4abeaab86bfaf78e0657150863090,2613
+- transformers-either-0.1.1@sha256:ec3d6fefd90e243b51aecebfc0ebc5db6381c261d473ea2df7ed7b501a8fb961,1501
 #
 # extra-deps: []
 
