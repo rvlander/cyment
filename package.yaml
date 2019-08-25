@@ -32,6 +32,7 @@ library:
     - transformers-either
     - either
     - vector
+    - string-interpolate
 
 executables:
   cyment-exe:
@@ -46,6 +47,7 @@ executables:
     - text
     - scotty
     - http-types
+    - string-random
 
 tests:
   cyment-test:
