@@ -15,6 +15,7 @@ import qualified GitHub.Endpoints.Repos as Repos
 import qualified GitHub.Endpoints.GitData.References as Refs
 import qualified GitHub.Endpoints.GitData.Commits as Commits
 import qualified GitHub.Endpoints.GitData.Trees as Trees
+import qualified GitHub.Endpoints.PullRequests as PR
 import qualified GitHub.Data.Definitions as G
 import qualified Data.Vector as V
 import  GitHub.Data.Name
@@ -62,6 +63,9 @@ pushCommit name owner content =
         commit <- mkGhRq $ Commits.createCommit auth (N name) (N owner) newCommit
         printG commit
         newCommitSha <- hoistMaybe NoCommit $ Commits.gitCommitSha commit
-        let newReference = Refs.NewGitReference "refs/heads/un_test" $ Refs.untagName newCommitSha
+        let newReference = Refs.NewGitReference "refs/heads/un_test1" $ Refs.untagName newCommitSha
         ref <- mkGhRq $ Refs.createReference auth (N name) (N owner) newReference
         printG ref
+        let newPullRequest = PR.CreatePullRequest "new comment" "Please moderate comment" "un_test1" "master"
+        pr <- mkGhRq $ PR.createPullRequest auth (N name) (N owner) newPullRequest
+        printG pr
