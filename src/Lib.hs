@@ -52,7 +52,7 @@ pushCommitAndMakePR name owner commentId path commenter content =
         mkGhRq = newEitherT . fmap (mapLeft GitHubError)
         commitMsg = [i|#{commenter}'s comment at #{path}|]
         commentHead=[i|refs/heads/comment-#{commentId}|]
-        commentPath=[i|comments/#{path}.#{commentId}.markdown|]
+        commentPath=[i|comments/#{path}/#{commentId}.markdown|]
     in
     runEitherT $ 
     do
