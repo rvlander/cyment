@@ -12,7 +12,8 @@ import Data.Text         (Text, pack)
 import qualified Data.Text.IO        as T
 import qualified Data.ByteString.Char8 as B
 import Data.String.Interpolate (i)
-        
+import Data.Time (UTCTime)
+import Data.Time.Format (formatTime, defaultTimeLocale)
 
 import qualified GitHub.Endpoints.Repos as Repos
 import qualified GitHub.Endpoints.GitData.References as Refs
@@ -75,8 +76,9 @@ pushCommitAndMakePR name owner commentId path commenter content =
         pr <- mkGhRq $ PR.createPullRequest auth (N name) (N owner) newPullRequest
         printG pr
 
-buildContent :: Text -> Text -> Text
-buildContent commenter comment = [i|---
+buildContent :: Text -> Text -> UTCTime ->Text
+buildContent commenter comment time = [i|---
 author: #{commenter}
+published: #{formatTime defaultTimeLocale "%F %T" time}
 ---
 #{comment}|]

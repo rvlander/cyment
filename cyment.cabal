@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 51ae0a986c8182795b0aead68c23af7334e61a17ac9bb60d19ed7ef8c821a04d
+-- hash: 664734c767e795ebb74b04934a6c82b0a31c7b9ce35fbb7f95782221058e1594
 
 name:           cyment
 version:        0.1.0.0
@@ -39,6 +39,7 @@ library
     , github
     , string-interpolate
     , text
+    , time
     , transformers
     , transformers-either
     , vector
@@ -58,6 +59,7 @@ executable cyment-exe
     , scotty
     , string-random
     , text
+    , time
   default-language: Haskell2010
 
 test-suite cyment-test

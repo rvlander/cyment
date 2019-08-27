@@ -10,6 +10,7 @@ import Data.Text (pack)
 import Network.HTTP.Types.Status
 import Text.StringRandom
 import Data.Text         (Text)
+import Data.Time.Clock (getCurrentTime)
 
 main =
   let 
@@ -24,6 +25,7 @@ main =
     --  redirectUrl <- param "redirect" 
      liftAndCatchIO $ do 
         commentId <- stringRandomIO idPattern
-        res <- pushCommitAndMakePR namespace repo commentId path commenter $ buildContent commenter comment
+        datetime <- getCurrentTime
+        res <- pushCommitAndMakePR namespace repo commentId path commenter $ buildContent commenter comment datetime
         either (putStrLn . show) (putStrLn . show) res
      html "Thanks, your comment is wating to be approved!") (\msg -> status badRequest400)

@@ -33,6 +33,7 @@ library:
     - either
     - vector
     - string-interpolate
+    - time
 
 executables:
   cyment-exe:
@@ -48,6 +49,7 @@ executables:
     - scotty
     - http-types
     - string-random
+    - time
 
 tests:
   cyment-test:
