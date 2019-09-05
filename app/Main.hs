@@ -11,7 +11,9 @@ import Network.HTTP.Types.Status
 import Text.StringRandom
 import Data.Text         (Text)
 import Data.Time.Clock (getCurrentTime)
-import System.Environment (getEnv)
+import System.Environment (getEnv, lookupEnv)
+import Text.Read (readMaybe)
+import Data.Maybe (fromMaybe)
 
 main =
   let 
@@ -19,18 +21,18 @@ main =
   in 
     do
       githubToken <- getEnv "GITHUB_TOKEN"
-      port <- fromMaybe 3000 $ lookupEnv "PORT"
-    scotty 3000 $
-    post "/:namespace/:repo" $ rescue (do
-      namespace <- param "namespace"
-      repo <- param "repo"
-      path <- param "path"
-      commenter <- param "commenter"
-      comment <- param "comment"
-     --  redirectUrl <- param "redirect" 
-      liftAndCatchIO $ do 
-         commentId <- stringRandomIO idPattern
-         datetime <- getCurrentTime
-         res <- pushCommitAndMakePR githubToken namespace repo commentId path commenter $ buildContent commenter comment datetime
-         either (putStrLn . show) (putStrLn . show) res
-      html "Thanks, your comment is waiting to be approved!") (\msg -> status badRequest400)
+      port <- lookupEnv "PORT"
+      scotty (fromMaybe 3000 $ (port >>= readMaybe))  $ do
+        post "/:namespace/:repo" $ rescue (do
+          namespace <- param "namespace"
+          repo <- param "repo"
+          path <- param "path"
+          commenter <- param "commenter"
+          comment <- param "comment"
+         --  redirectUrl <- param "redirect" 
+          liftAndCatchIO $ do 
+             commentId <- stringRandomIO idPattern
+             datetime <- getCurrentTime
+             res <- pushCommitAndMakePR githubToken namespace repo commentId path commenter $ buildContent commenter comment datetime
+             either (putStrLn . show) (putStrLn . show) res
+          html "Thanks, your comment is waiting to be approved!") (\msg -> status badRequest400)
