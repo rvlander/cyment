@@ -11,6 +11,7 @@ import Network.HTTP.Types.Status
 import Text.StringRandom
 import Data.Text         (Text)
 import Data.Time.Clock (getCurrentTime)
+import System.Environment (getEnv)
 
 main =
   let 
@@ -26,6 +27,7 @@ main =
      liftAndCatchIO $ do 
         commentId <- stringRandomIO idPattern
         datetime <- getCurrentTime
-        res <- pushCommitAndMakePR namespace repo commentId path commenter $ buildContent commenter comment datetime
+        githubToken <- getEnv "GITHUB_TOKEN"
+        res <- pushCommitAndMakePR githubToken namespace repo commentId path commenter $ buildContent commenter comment datetime
         either (putStrLn . show) (putStrLn . show) res
-     html "Thanks, your comment is wating to be approved!") (\msg -> status badRequest400)
+     html "Thanks, your comment is waiting to be approved!") (\msg -> status badRequest400)

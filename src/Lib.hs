@@ -46,10 +46,10 @@ formatRepo = Repos.getUrl . Repos.repoUrl
 printG :: Show a => a -> EitherT Error IO ()
 printG = (handleIOEitherT  (\_ -> IOError "Could not print to screen!")) . T.putStrLn . pack . show
 
-pushCommitAndMakePR :: Text-> Text -> Text -> Text -> Text -> Text ->IO(Either Error ())
-pushCommitAndMakePR name owner commentId path commenter content =
+pushCommitAndMakePR :: String -> Text-> Text -> Text -> Text -> Text -> Text ->IO(Either Error ())
+pushCommitAndMakePR apiKey name owner commentId path commenter content =
     let 
-        auth = Auth.OAuth $ B.pack "71d3449c9551dfa363ad5dc365c125b7f19fd509" 
+        auth = Auth.OAuth $ B.pack apiKey
         mkGhRq = newEitherT . fmap (mapLeft GitHubError)
         commitMsg = [i|#{commenter}'s comment at #{path}|]
         commentHead=[i|refs/heads/comment-#{commentId}|]
