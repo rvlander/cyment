@@ -4,61 +4,81 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>My Hakyll Blog - Home</title>
+        <title>Cyment - Home</title>
         <link rel="stylesheet" href="./css/default.css" />
+        <link rel="stylesheet" href="./css/tango.css" />
     </head>
     <body>
         <header>
             <div class="logo">
-                <a href="./">My Hakyll Blog</a>
+                <a href="./">Cyment</a>
             </div>
             <nav>
-                <a href="./">Home</a>
-                <a href="./about.html">About</a>
-                <a href="./contact.html">Contact</a>
-                <a href="./archive.html">Archive</a>
+                <a href="./index.html">Getting Started</a>
+                <a href="./faq.html">FAQ</a>
             </nav>
         </header>
 
+        <hr />
+
         <main role="main">
-            <h1>Home</h1>
-            <h2>Welcome</h2>
-
-<img src="./images/haskell-logo.png" style="float: right; margin: 10px;" />
-
-<p>Welcome to my blog!</p>
-
-<p>I've reproduced a list of recent posts here for your reading pleasure:</p>
-
-<h2>Posts</h2>
+            <h1 id="cyment-is-the-rock-solid-foundation-your-static-generated-site-needs-to-enable-your-readers-to-bring-content">Cyment is the rock solid foundation your static generated site needs to enable your readers to bring content</h1>
+<p>It aims at being like (and as no link to) staticman but more reliable. Here is how to get started.</p>
+<h2 id="invite-cymentbot-to-contribute-to-your-static-site-github-project.">1. Invite <code>cymentbot</code> to contribute to your static site Github project.</h2>
+<figure>
+<img src="images/add-cymentbot.png" alt="alt catpure" /><figcaption>alt catpure</figcaption>
+</figure>
+<h2 id="send-me-a-donation">2. Send me a donation</h2>
+<p>Why?</p>
 <ul>
-    
-        <li>
-            <a href="./posts/2015-12-07-tu-quoque.html">Tu Quoque</a> - December  7, 2015
-        </li>
-    
-        <li>
-            <a href="./posts/2015-11-28-carpe-diem.html">Carpe Diem</a> - November 28, 2015
-        </li>
-    
-        <li>
-            <a href="./posts/2015-10-07-rosa-rosa-rosam.html">Rosa Rosa Rosam</a> - October  7, 2015
-        </li>
-    
-        <li>
-            <a href="./posts/2015-08-12-spqr.html">S.P.Q.R.</a> - August 12, 2015
-        </li>
-    
+<li><p>Because hosting a service is not free.</p></li>
+<li><p>Because I value my time.</p></li>
 </ul>
-
-
-<p>…or you can find more in the <a href="./archive.html">archives</a>.</p>
-
+<p>Still don’t want to donate? Fine, you can host yourself cyment or staticman and still benefits from static comments!</p>
+<h2 id="wait-for-me-to-approve-your-invitation">3. Wait for me to approve your invitation</h2>
+<p>I am trying very hard to be as fast as possible. If you find I take to long, log an issue at cymentbot/this-is-to-slow</p>
+<h2 id="setup-forms-in-your-site-pointing-to-cyment-api">4. Setup forms in your site pointing to cyment api</h2>
+<p>Then just add form to your pages:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">&lt;form</span><span class="ot"> action=</span><span class="st">&quot;http://localhost:3000/</span><span class="er">&lt;</span><span class="st">your_pseudo&gt;/</span><span class="er">&lt;</span><span class="st">you're repo&gt;&quot;</span><span class="ot"> method=</span><span class="st">&quot;POST&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2">	<span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;hidden&quot;</span><span class="ot"> name=</span><span class="st">&quot;path&quot;</span> </a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="ot">           value=</span><span class="st">&quot;</span><span class="er">&lt;</span><span class="st">path where you want to store comments&gt;&quot;</span> <span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;hidden&quot;</span><span class="ot"> name=</span><span class="st">&quot;redirect&quot;</span> </a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="ot">           value=</span><span class="st">&quot;</span><span class="er">&lt;</span><span class="st">url where your readers will be redirected after posting a comment&gt;&quot;</span> <span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb1-6" title="6">    Author:<span class="kw">&lt;br&gt;</span></a>
+<a class="sourceLine" id="cb1-7" title="7">    <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> name=</span><span class="st">&quot;commenter&quot;</span><span class="ot"> value=</span><span class="st">&quot;Bad guy&quot;</span><span class="kw">&gt;&lt;br&gt;</span></a>
+<a class="sourceLine" id="cb1-8" title="8">    Comment:<span class="kw">&lt;br&gt;</span></a>
+<a class="sourceLine" id="cb1-9" title="9">    <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> name=</span><span class="st">&quot;comment&quot;</span><span class="ot"> value=</span><span class="st">&quot;This sucks&quot;</span><span class="kw">&gt;&lt;br&gt;&lt;br&gt;</span></a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="ot"> value=</span><span class="st">&quot;Submit&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="kw">&lt;/form&gt;</span></a></code></pre></div>
+<p>In the pull request generated by cymentbot you should see a new file created at <code>comments/&lt;path&gt;/&lt;randomId&gt;.markdown</code>. It migh look like:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb2-1" title="1">---</a>
+<a class="sourceLine" id="cb2-2" title="2">author: Bad guy</a>
+<a class="sourceLine" id="cb2-3" title="3">published: published: Mon, 06 Sep 2010 00:01:00 UTC</a>
+<a class="sourceLine" id="cb2-4" title="4">---</a>
+<a class="sourceLine" id="cb2-5" title="5">This suck</a></code></pre></div>
+<p>The <code>redirect</code> param is used to redirect your reader after the comment has been post. Currently <code>cyment</code> does not support any configuration such as <code>staticman</code> yml configuration file. Leave with it, make a PR or wait: I might do it myself in a distant future.</p>
+<h2 id="deploy-your-updated-site-and-everything-should-be-rolling">5. Deploy your updated site and everything should be rolling</h2>
+<p>Currently all user content needs to be moderated, therefore you need to keep up with your project cymentbots’s generated PR.</p>
+            <section class="comments-block">
+                    <hr />
+                    <h1>Comments</h1>
+                    
+                    <form action="http://localhost:3000/rvlander/blog" method="POST">
+                        <input type="hidden" name="path" value="index.markdown" />
+                        <input type="hidden" name="redirect" value="/index.html" />
+                        Pseudo:<input type="text" name="commenter" placeholder="Bad guy"><br>
+                        Comment:<br>
+                        <textarea name="comment" placeholder="This sucks"></textarea><br><br>
+                        <input type="submit" value="Submit">
+                      </form>
+                </section>
         </main>
 
+        <hr />
         <footer>
             Site proudly generated by
             <a href="http://jaspervdj.be/hakyll">Hakyll</a>
         </footer>
     </body>
 </html>
+

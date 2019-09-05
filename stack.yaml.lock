@@ -3,7 +3,14 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    hackage: string-interpolate-0.1.0.1@sha256:6efbc888a2986ee80ddd014fded600de113554684fe5eaca87cf02ab59cfa95c,1999
+    pantry-tree:
+      size: 614
+      sha256: cc0dd03158125caf1766efa7ad76ff53743f8fb41a4db4aff9b57f322c0dd824
+  original:
+    hackage: string-interpolate-0.1.0.1@sha256:6efbc888a2986ee80ddd014fded600de113554684fe5eaca87cf02ab59cfa95c,1999
 snapshots:
 - completed:
     size: 509471
