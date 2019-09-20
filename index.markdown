@@ -4,7 +4,7 @@ title: Home
 
 # Cyment is the rock solid foundation your static generated site needs to enable your readers to bring content
 
-It aims at being like (and as no link to) staticman but more reliable. Here is how to get started.
+It aims at being like (and is no linked to) staticman but strives to be more reliable. Here is how to get started.
 
 ## 1. Invite `cymentbot` to contribute to your static site Github project.
 
