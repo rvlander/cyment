@@ -39,7 +39,7 @@
 <p>I am trying very hard to be as fast as possible. If you find I take to long, log an issue at cymentbot/this-is-to-slow</p>
 <h2 id="setup-forms-in-your-site-pointing-to-cyment-api">4. Setup forms in your site pointing to cyment api</h2>
 <p>Then just add form to your pages:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">&lt;form</span><span class="ot"> action=</span><span class="st">&quot;http://localhost:3000/</span><span class="er">&lt;</span><span class="st">your_pseudo&gt;/</span><span class="er">&lt;</span><span class="st">you're repo&gt;&quot;</span><span class="ot"> method=</span><span class="st">&quot;POST&quot;</span><span class="kw">&gt;</span></a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">&lt;form</span><span class="ot"> action=</span><span class="st">&quot;https://cyment.herokuapp.com/</span><span class="er">&lt;</span><span class="st">your_pseudo&gt;/</span><span class="er">&lt;</span><span class="st">you're repo&gt;&quot;</span><span class="ot"> method=</span><span class="st">&quot;POST&quot;</span><span class="kw">&gt;</span></a>
 <a class="sourceLine" id="cb1-2" title="2">	<span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;hidden&quot;</span><span class="ot"> name=</span><span class="st">&quot;path&quot;</span> </a>
 <a class="sourceLine" id="cb1-3" title="3"><span class="ot">           value=</span><span class="st">&quot;</span><span class="er">&lt;</span><span class="st">path where you want to store comments&gt;&quot;</span> <span class="kw">/&gt;</span></a>
 <a class="sourceLine" id="cb1-4" title="4">    <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;hidden&quot;</span><span class="ot"> name=</span><span class="st">&quot;redirect&quot;</span> </a>
@@ -56,8 +56,11 @@
 <a class="sourceLine" id="cb2-3" title="3">published: published: Mon, 06 Sep 2010 00:01:00 UTC</a>
 <a class="sourceLine" id="cb2-4" title="4">---</a>
 <a class="sourceLine" id="cb2-5" title="5">This suck</a></code></pre></div>
-<p>The <code>redirect</code> param is used to redirect your reader after the comment has been post. Currently <code>cyment</code> does not support any configuration such as <code>staticman</code> yml configuration file. Leave with it, make a PR or wait: I might do it myself in a distant future.</p>
-<h2 id="deploy-your-updated-site-and-everything-should-be-rolling">5. Deploy your updated site and everything should be rolling</h2>
+<!--The `redirect` param is used to redirect your reader after the comment has been post.-->
+<h2 id="configure-cyment-optional">5. Configure cyment (optional)</h2>
+<p>You can place a <code>cyment.yaml</code> configuration file at the root of the master branch of your project.</p>
+<p>Currently only <code>branch: &quot;your_branch&quot;</code> which specifies on wich branc cymentbot will do pull requests is supported.</p>
+<h2 id="deploy-your-updated-site-and-everything-should-be-rolling">6. Deploy your updated site and everything should be rolling</h2>
 <p>Currently all user content needs to be moderated, therefore you need to keep up with your project cymentbots’s generated PR.</p>
             <section class="comments-block">
                     <hr />

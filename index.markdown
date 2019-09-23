@@ -29,7 +29,7 @@ I am trying very hard to be as fast as possible. If you find I take to long, log
 Then just add form to your pages:
 
 ```html
-<form action="http://localhost:3000/<your_pseudo>/<you're repo>" method="POST">
+<form action="https://cyment.herokuapp.com/<your_pseudo>/<you're repo>" method="POST">
 	<input type="hidden" name="path" 
            value="<path where you want to store comments>" />
     <input type="hidden" name="redirect" 
@@ -52,8 +52,14 @@ published: published: Mon, 06 Sep 2010 00:01:00 UTC
 This suck
 ```
 
-The `redirect` param is used to redirect your reader after the comment has been post. Currently `cyment` does not support any configuration such as `staticman` yml configuration file. Leave with it, make a PR or wait: I might do it myself in a distant future.
+<!--The `redirect` param is used to redirect your reader after the comment has been post.-->
 
-## 5. Deploy your updated site and everything should be rolling
+## 5. Configure cyment (optional)
+
+You can place a `cyment.yaml` configuration file at the root of the master branch of your project.
+
+Currently only `branch: "your_branch"` which specifies on wich branc cymentbot will do pull requests is supported.
+
+## 6. Deploy your updated site and everything should be rolling
 
 Currently all user content needs to be moderated, therefore you need to keep up with your project cymentbots's generated PR.
