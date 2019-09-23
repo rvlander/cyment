@@ -34,6 +34,8 @@ library:
     - vector
     - string-interpolate
     - time
+    - base64-bytestring
+    - yaml
 
 executables:
   cyment-exe:
@@ -50,6 +52,7 @@ executables:
     - http-types
     - string-random
     - time
+    - transformers-either
 
 tests:
   cyment-test:
