@@ -6,3 +6,29 @@ footer {
   margin-top: 3rem;
   padding: 1.2rem 0;
 }
+
+.comments-block {
+  margin-top: 3rem;
+}
+
+.comments-block h1 {
+  font-size: 1.35rem;
+}
+
+.comments p {
+  margin-bottom: 1.4rem;
+  font-size: 1.0rem;
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+.comments .ref {
+  font-size: 1.0rem;
+  margin-bottom: 0.1rem;
+  margin-left: 1rem;
+  color: #aaa
+}
+
+.ref .emph {
+  color: #555
+} 

@@ -24,6 +24,8 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
+    match "comments/**/*" $ compile $ getResourceBody >>= (withItemBody (return . escapeHtml)) 
+
     match "*.markdown" $ do
         route $setExtension "html"
         compile $ do
