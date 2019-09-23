@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: e5601e242a795b948ea850b45a1edb47d8b1b9a4936ca39a3329f4af8e543afe
+-- hash: 72faa306bd0667b1378976fc5287cc115fdb148bcd6d9f3566c1f86da3496560
 
 name:           cyment
 version:        0.1.0.0
@@ -38,6 +38,8 @@ library
     , bytestring
     , either
     , github
+    , http-client
+    , http-types
     , string-interpolate
     , text
     , time

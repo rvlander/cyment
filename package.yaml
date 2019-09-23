@@ -36,6 +36,8 @@ library:
     - time
     - base64-bytestring
     - yaml
+    - http-client
+    - http-types
 
 executables:
   cyment-exe:

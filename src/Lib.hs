@@ -37,6 +37,8 @@ import Data.ByteString.Base64 as B64
 import Control.Arrow as A
 import Data.Text.Encoding
 import Data.Yaml (decodeEither', FromJSON)
+import Network.HTTP.Client
+import Network.HTTP.Types.Status (notFound404)
 
 data Error = 
      GitHubError G.Error
@@ -47,13 +49,13 @@ data Error =
 
 
 data RepoConf = RepoConf {
-    branch :: Text
+    branch :: Maybe Text
 } deriving(Generic, Show)
 
 instance FromJSON RepoConf
 
 defaultConf :: RepoConf
-defaultConf :: RepoConf "master"
+defaultConf = RepoConf Nothing
 
 getRepo :: Text -> Text -> IO (Either Repos.Error Repos.Repo)
 getRepo name owner = 
@@ -66,20 +68,24 @@ formatRepo = Repos.getUrl . Repos.repoUrl
 printG :: Show a => a -> EitherT Error IO ()
 printG = (handleIOEitherT  (\_ -> IOError "Could not print to screen!")) . T.putStrLn . pack . show
 
-getContent :: Content -> B.ByteString
+getContent :: Content -> Maybe B.ByteString
 getContent (ContentFile (ContentFileData _ _ _ contentFileContent)) = 
-    B64.decodeLenient $ encodeUtf8 contentFileContent
-getContent _ = ""
+    Just $ B64.decodeLenient $ encodeUtf8 contentFileContent
+getContent _ = Nothing
 
 getConfig :: String -> Text -> Text -> EitherT Error  IO RepoConf
 getConfig apiKey name owner =
     let 
         auth = Auth.OAuth $ B.pack apiKey 
         mkGhRq = newEitherT . fmap (mapLeft GitHubError)
+        catch404  (Left (G.HTTPError (HttpExceptionRequest req (StatusCodeException  response  b))))
+            | (responseStatus response) == notFound404 = Right Nothing
+            | otherwise = (Left (G.HTTPError (HttpExceptionRequest req (StatusCodeException  response  b))))
+        catch404 b = fmap Just b
     in
         do
-            content <- mkGhRq $ Contents.contentsFor' (Just auth) (N name) (N owner) "cyment.yaml" Nothing
-            hoistEither $ A.left (\_->ConfigFileMalformed) $ decodeEither' $ getContent content
+            content <- mkGhRq $ fmap catch404  (Contents.contentsFor' (Just auth) (N name) (N owner) "cyment.yaml" Nothing)
+            hoistEither $ A.left (\_->ConfigFileMalformed) $ maybe (Right defaultConf) id (fmap decodeEither' $ getContent =<< content)
 
             
 
@@ -92,7 +98,7 @@ pushCommitAndMakePR apiKey name owner conf commentId path commenter content =
         commitMsg = [i|#{commenter}'s comment at #{path}|]
         commentHead=[i|refs/heads/comment-#{commentId}|]
         commentPath=[i|comments/#{path}/#{commentId}.markdown|]
-        targetBranch = branch conf
+        targetBranch = maybe "master" id (branch conf)
     in
     do
         ref <- mkGhRq $ Refs.reference' (Just auth) (N name) (N owner) (N [i|heads/#{targetBranch}|])
