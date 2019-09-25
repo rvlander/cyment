@@ -55,6 +55,8 @@ executables:
     - string-random
     - time
     - transformers-either
+    - wai-middleware-throttle
+    - clock
 
 tests:
   cyment-test:

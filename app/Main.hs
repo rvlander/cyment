@@ -15,15 +15,21 @@ import System.Environment (getEnv, lookupEnv)
 import Text.Read (readMaybe)
 import Data.Maybe (fromMaybe)
 import Control.Monad.Trans.Either
+import Network.Wai.Middleware.Throttle (defaultThrottleSettings, throttle, initThrottler)
+import System.Clock
+
 
 main =
   let 
     idPattern = pack . concat $  replicate 8 "[0-9a-z]"
+    throttleSettings = defaultThrottleSettings $ TimeSpec 3600 0
   in 
     do
       githubToken <- getEnv "GITHUB_TOKEN"
       port <- lookupEnv "PORT"
+      throttler <- initThrottler throttleSettings
       scotty (fromMaybe 3000 $ (port >>= readMaybe))  $ do
+        middleware $ throttle throttler
         post "/:namespace/:repo" $ rescue (do
           namespace <- param "namespace"
           repo <- param "repo"
